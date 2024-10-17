@@ -1,0 +1,9 @@
+.node-version
+venv
+.venv
+.DS_Store
+.idea/
+node_modules/
+media/
+*.zip
+uploads/

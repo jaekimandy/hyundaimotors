@@ -1,0 +1,1 @@
+import{ae as a,af as e}from"./entry.afa8c1ca.js";import{u as i}from"./auth.768c69d7.js";import"./setting.383ad253.js";const f=a((t,r)=>{if(t.path==="/sign-in")return;if(i().isExpired)return e("/sign-in")});export{f as default};

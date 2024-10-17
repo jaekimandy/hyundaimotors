@@ -1,0 +1,147 @@
+query analysisFiles {
+  analysisFiles {
+    id
+    chartCellName,
+    carType,
+    year,
+    roadSurface,
+    weight,
+    area,
+    testCount,
+    filename,
+    createdAt
+  }
+}
+
+query analysisFile($id: String!) {
+  analysisFile(id: $id) {
+    id
+    chartCellName
+    carType
+    year
+    roadSurface
+    weight
+    area
+    testCount
+    chartData
+    createdAt
+  }
+}
+
+query analysisLevelCrossings($analysisFileId: String!) {
+  analysisLevelCrossings(analysisFileId: $analysisFileId) {
+    id
+    title
+    startPos
+    endPos
+    filename
+    images
+    status
+  }
+}
+
+query analysisLevelCrossing($id: String!) {
+  analysisLevelCrossing(id: $id) {
+    id
+    title
+    startPos
+    endPos
+    status
+  }
+}
+
+mutation createAnalysisFile($chartCellName: String!,
+  $carType: String!,
+  $chartData: String!,
+  $roadSurface: String!,
+  $weight: String!,
+  $year: String!,
+  $area: String!,
+  $testCount: String!,
+  $xcSplitRange: String,
+) {
+  createAnalysisFile(chartCellName: $chartCellName,
+    carType: $carType,
+    chartData: $chartData,
+    roadSurface: $roadSurface,
+    weight: $weight,
+    year: $year,
+    area: $area,
+    testCount: $testCount,
+    xcSplitRange: $xcSplitRange
+  ) {
+    analysisFile {
+      id
+    }
+  }
+}
+
+
+mutation updateAnalysisFile($id: String!, $chartCellName: String!, $carType: String!, $chartData: String, $roadSurface: String!, $weight: String!, $year: String!, $area: String!, $testCount: String!) {
+  updateAnalysisFile(id: $id, chartCellName: $chartCellName, carType: $carType, chartData: $chartData, roadSurface: $roadSurface, weight: $weight, year: $year, area: $area, testCount: $testCount) {
+    analysisFile {
+      id
+    }
+  }
+}
+
+mutation deleteAnalysisFile($id: String!) {
+  deleteAnalysisFile(id: $id) {
+    success
+  }
+}
+
+
+mutation createAnalysisLevelCrossing($analysisFileId: String!,
+  $title: String!
+  $startPos: Int,
+  $endPos: Int,
+  $chartData: String!) {
+  createAnalysisLevelCrossing(analysisFileId: $analysisFileId,
+    title: $title,
+    startPos: $startPos,
+    endPos: $endPos,
+    chartData: $chartData) {
+    analysisLevelCrossing {
+      id
+    }
+  }
+}
+
+mutation uploadAnalysisLevelCrossing($analysisFileId: String!,
+  $title: String!
+  $chartData: String!) {
+  uploadAnalysisLevelCrossing(analysisFileId: $analysisFileId,
+    title: $title,
+    chartData: $chartData) {
+    analysisLevelCrossing {
+      id
+    }
+  }
+}
+
+mutation updateAnalysisLevelCrossing($id: String!,
+  $title: String!
+  $startPos: Int,
+  $endPos: Int) {
+  updateAnalysisLevelCrossing(id: $id,
+    title: $title,
+    startPos: $startPos,
+    endPos: $endPos) {
+    analysisLevelCrossing {
+      id
+    }
+  }
+}
+
+mutation startAnalysisLevelCrossing($id: String!) {
+  startAnalysisLevelCrossing(id: $id) {
+    success
+  }
+}
+
+mutation deleteAnalysisLevelCrossing($id: String!) {
+  deleteAnalysisLevelCrossing(id: $id) {
+    success
+  }
+}
